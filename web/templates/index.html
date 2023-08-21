@@ -1,449 +1,252 @@
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <script>
+            alert("{{messages[-1]}}")
+        </script>
+    {% endif %}
+{% endwith %}
+
 <!DOCTYPE html>
-
-<html lang="en">
-
-
-
+<html lang="ko">
 <head>
-
   <meta charset="utf-8">
-
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-
-  <title>VEGITA</title>
-
+  <title>하수관로 수위 예측 project</title>
   <!-- Font Awesome -->
-
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
   <!-- Bootstrap core CSS -->
-
   <link href="{{url_for('static', filename='css/bootstrap.min.css')}}" rel="stylesheet">
-
   <!-- Material Design Bootstrap -->
-
   <link href="{{url_for('static', filename='css/mdb.min.css')}}" rel="stylesheet">
-
   <!-- Your custom styles (optional) -->
-
   <link href="{{url_for('static', filename='css/style.min.css')}}" rel="stylesheet">
-
-  <style type="text/css">
-
-
-
-    html,
-
-    body,
-
-    header,
-
-    .carousel {
-
-      height: 100%;
-
-    }
-
-
-
-    @media (min-width: 800px) and (max-width: 850px) {
-
-            .navbar:not(.top-nav-collapse) {
-
-                background: #1C2331!important;
-
-            }
-
-        }
-
-  </style>
-
-
 </head>
-
-
-
 <body>
-
-
-
-  <nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar">
-
-    <div class="container">
-
-      <a class="navbar-brand" href="https://mdbootstrap.com/material-design-for-bootstrap/" target="_blank">
-
-        <strong>VEGITA</strong>
-
-      </a>
-
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-
-        aria-expanded="false" aria-label="Toggle navigation">
-
-        <span class="navbar-toggler-icon"></span>
-
-      </button>
-
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
-        <ul class="navbar-nav mr-auto">
-
-          <li class="nav-item active">
-
-            <a class="nav-link" href="#">HOME
-
-              <span class="sr-only">(current)</span>
-
-            </a>
-
-          </li>
-
-        </ul>
-
-
-
-        <ul class="navbar-nav nav-flex-icons">
-
-          <li class="nav-item">
-
-            <a href="#" class="nav-link border border-light rounded"
-
-              target="_blank">
-
-              <i class="fa fa-github mr-2"></i>GITHUB
-
-            </a>
-
-          </li>
-
-        </ul>
-
-      </div>
-
-    </div>
-
-  </nav>
-
-
-
-  <div id="carousel-example-1z" class="carousel slide carousel-fade" data-ride="carousel">
-
-    <ol class="carousel-indicators">
-
-      <li data-target="#carousel-example-1z" data-slide-to="0" class="active"></li>
-
-      <li data-target="#carousel-example-1z" data-slide-to="1"></li>
-
-      <li data-target="#carousel-example-1z" data-slide-to="2"></li>
-
-    </ol>
-
-    <div class="carousel-inner" role="listbox">
-
-      <div class="carousel-item active">
-
-        <div class="view">
-
-          <video class="video-intro" autoplay loop>
-
-            <source src="https://mdbootstrap.com/img/video/city.mp4" type="video/mp4" >
-
-          </video>
-
-          <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
-
-            <div class="text-center white-text mx-5 wow fadeIn">
-
-              <h1 class="mb-4">
-
-                <strong>서울 침수 피해 예측</strong>
-
-              </h1>
-
-              <p class="mb-4 d-none d-md-block">
-
-                <strong>강수량 데이터와 지형, 지역환경 빅 데이터를 분석하여 예측을 수행합니다</strong>
-
-              </p>
-
-              <a target="_blank" href="#" class="btn btn-outline-white btn-lg">START
-
-                <i class="fa fa-graduation-cap ml-2"></i>
-
-              </a>
-
+    <header>
+        <style>
+            #intro {
+                background-image: url("https://mdbootstrap.com/img/new/fluid/city/018.jpg");
+                height:100vh
+            }
+            
+            .navbar .nav-link {
+                color: #fff !important;
+            }
+        </style>
+        
+        <!-- navbar -->
+        <nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar">
+            <div class="container">
+                <a class="navbar-brand" href="#">
+                    <strong>Multi_Semi project_3조</strong>
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav nav-flex-icons">
+                        <li class="nav-item">
+                            <a href="https://github.com/Minhyeok-kimm/multi_semiproject/tree/main" class="nav-link border border-light rounded"
+                            target="_blank">
+                            <i class="fa fa-github mr-2"></i>GitHub
+                            </a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-
-    <a class="carousel-control-prev" href="#carousel-example-1z" role="button" data-slide="prev">
-
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-
-      <span class="sr-only">Previous</span>
-
-    </a>
-
-    <a class="carousel-control-next" href="#carousel-example-1z" role="button" data-slide="next">
-
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-
-      <span class="sr-only">Next</span>
-
-    </a>
-
-
-
-  </div>
-
-
-
-  <main>
-
-    <div class="container">
-
-      <section class="mt-5 wow fadeIn">
-
-        <div class="row">
-
-          <div class="col-md-6 mb-4">
-
-            <img src="https://mdbootstrap.com/img/Marketing/mdb-press-pack/mdb-main.jpg" class="img-fluid z-depth-1-half" alt="">
-
-          </div>
-
-          <div class="col-md-6 mb-4">
-
-            <h3 class="h3 mb-3">서울 침수 예측 결과</h3>
-
-            <p>RandomForest 모델을 통해 침수 피해를 학습 & 예측</p>
-
-            <hr>
-
-            <a target="_blank" href="#" class="btn btn-grey btn-md">Download
-
-              <i class="fa fa-download ml-1"></i>
-
-            </a>
-
-          </div>
-
-        </div>
-
-      </section>
-
-
-
-      <hr class="my-5">
-
-      <section>
-
-        <h3 class="h3 text-center mb-5">서울 침수 예측하기</h3>
-
-        <div class="row wow fadeIn">
-
-          <div class="col-lg-6 col-md-12 px-4">
-
-            <form action="/predict" method="post">
-              <div class="form-group">
-                <label for="district">자치구 선택</label>
-                <select name="district" class="form-control" id="districtSelect" onchange="selectDistrict()">
-                    <option value="">자치구 선택</option>
-                    <option value="강남구">강남구</option>
-                    <option value="종로구">종로구</option>
-                    <option value="성동구">성동구</option>
-                    <option value="중구">중구</option>
-                    <option value="광진구">광진구</option>
-                    <option value="동대문구">동대문구</option>
-                    <option value="중랑구">중랑구</option>
-                    <option value="성북구">성북구</option>
-                    <option value="강북구">강북구</option>
-                    <option value="도봉구">도봉구</option>
-                    <option value="노원구">노원구</option>
-                    <option value="은평구">은평구</option>
-                    <option value="서대문구">서대문구</option>
-                    <option value="마포구">마포구</option>
-                    <option value="양천구">양천구</option>
-                    <option value="강서구">강서구</option>
-                    <option value="구로구">구로구</option>
-                    <option value="금천구">금천구</option>
-                    <option value="영등포구">영등포구</option>
-                    <option value="동작구">동작구</option>
-                    <option value="관악구">관악구</option>
-                    <option value="서초구">서초구</option>
-                    <option value="송파구">송파구</option>
-                    <option value="강동구">강동구</option>
-                    <option value="용산구">용산구</option>
-                </select>
-
-                <script>
-                  function selectDistrict() {
-                      var districtSelect = document.getElementById('districtSelect');
-                      var selectedDistrict = districtSelect.value;
-              
-                      var districtData = {
-                        '종로구': {'경사도': 12.033665, '해발고도': 146.699945, '불투수면': 0.42017}, 
-                        '중구': {'경사도': 7.516393, '해발고도': 53.612472, '불투수면': 0.750551}, 
-                        '용산구': {'경사도': 6.438682, '해발고도': 34.320069, '불투수면': 0.441571}, 
-                        '성동구': {'경사도': 5.157443, '해발고도': 22.095518, '불투수면': 0.63354}, 
-                        '광진구': {'경사도': 8.774289, '해발고도': 41.891077, '불투수면': 0.572363}, 
-                        '동대문구': {'경사도': 4.267833, '해발고도': 21.788907, '불투수면': 0.738865}, 
-                        '중랑구': {'경사도': 9.448087, '해발고도': 62.913088, '불투수면': 0.585059}, 
-                        '성북구': {'경사도': 9.802389, '해발고도': 120.526722, '불투수면': 0.524748}, 
-                        '강북구': {'경사도': 13.331114, '해발고도': 187.07254, '불투수면': 0.36156}, 
-                        '도봉구': {'경사도': 11.031232, '해발고도': 114.665267, '불투수면': 0.404197}, 
-                        '노원구': {'경사도': 11.096796, '해발고도': 92.393657, '불투수면': 0.36999}, 
-                        '은평구': {'경사도': 11.21368, '해발고도': 100.477627, '불투수면': 0.384954}, 
-                        '서대문구': {'경사도': 9.031532, '해발고도': 68.89623, '불투수면': 0.529234}, 
-                        '마포구': {'경사도': 5.068366, '해발고도': 19.953597, '불투수면': 0.536892}, 
-                        '양천구': {'경사도': 4.476898, '해발고도': 22.80727, '불투수면': 0.672809}, 
-                        '강서구': {'경사도': 4.299934, '해발고도': 13.649094, '불투수면': 0.39739}, 
-                        '구로구': {'경사도': 4.891672, '해발고도': 26.073147, '불투수면': 0.606688}, 
-                        '금천구': {'경사도': 8.893557, '해발고도': 57.899442, '불투수면': 0.603816}, 
-                        '영등포구': {'경사도': 2.223087, '해발고도': 11.489841, '불투수면': 0.596109}, 
-                        '동작구': {'경사도': 5.697837, '해발고도': 37.605641, '불투수면': 0.600425}, 
-                        '관악구': {'경사도': 10.594165, '해발고도': 139.631242, '불투수면': 0.391877}, 
-                        '서초구': {'경사도': 9.745786, '해발고도': 80.859897, '불투수면': 0.361815}, 
-                        '강남구': {'경사도': 5.879383, '해발고도': 35.586721, '불투수면': 0.548862}, 
-                        '송파구': {'경사도': 2.734773, '해발고도': 21.890085, '불투수면': 0.572412}, 
-                        '강동구': {'경사도': 3.944715, '해발고도': 25.698091, '불투수면': 0.471826}};
-              
-                      if (selectedDistrict in districtData) {
-                          var data = districtData[selectedDistrict];
-                          document.querySelector('input[name="slope"]').value = data.경사도;
-                          document.querySelector('input[name="altitude"]').value = data.해발고도;
-                          document.querySelector('input[name="impervious_surface"]').value = data.불투수면;
-                      }
-                  }
-              </script>
+        </nav>
+        
+    
+    <!-- Background image -->
+    <div id="intro" class="bg-image shadow-2-strong">
+        <div class="mask" style="background-color: rgba(0, 0, 0, 0.8);">
+          <div class="container d-flex align-items-center justify-content-center text-center h-100">
+            <div class="text-white">
+              <h1 class="mb-3"><strong>서울 침수 피해 예측</strong></h1>
+              <h5 class="mb-4">강수량 데이터와 지형, 지역환경 데이터를 분석하여 예측을 수행합니다</h5>
+              <a href="#model" class="btn btn-outline-white btn-lg">Model download</a>
+              <a href="#start" class="btn btn-outline-white btn-lg">START/결과 바로 보기</a>
             </div>
-              <div class="form-group">
-                <label for="slope">경사도(°) - 자동입력</label>
-                <input type="text" name="slope" class="form-control" placeholder="경사도를 입력하세요.">
-              </div>
-              <div class="form-group">
-                <label for="altitude">해발고도(m) - 자동입력</label>
-                <input type="text" name="altitude" class="form-control" placeholder="해발고도를 입력하세요.">
-              </div>
-              <div class="form-group">
-                <label for="impervious_surface">불투수면(%) - 자동입력</label>
-                <input type="text" name="impervious_surface" class="form-control" placeholder="불투수면을 입력하세요.">
-              </div>
-              <div class="form-group">
-                <label for="1hr_rainfall">1hr 최대 강수량(mm)</label>
-                <input type="text" name="1hr_rainfall" class="form-control" placeholder="1hr 최대 강수량을 입력하세요.">
-              </div>
-              <div class="form-group">
-                <label for="daily_rainfall">일평균 강수량(mm)</label>
-                <input type="text" name="daily_rainfall" class="form-control" placeholder="일평균 강수량을 입력하세요.">
-              </div>
-              <div class="form-group">
-                <label for="green_area">녹지 면적율(%)</label>
-                <input type="text" name="green_area" class="form-control" placeholder="녹지 면적율을 입력하세요.">
-              </div>
-              <div class="form-group">
-                <label for="river_area">하천 면적율(%)</label>
-                <input type="text" name="river_area" class="form-control" placeholder="하천 면적율을 입력하세요.">
-              </div>
-              <div class="form-group">
-                <label for="river_count">복개하천 개수(개)</label>
-                <input type="text" name="river_count" class="form-control" placeholder="복개하천 개수를 입력하세요.">
-              </div>
-              <div class="form-group">
-                <label for="manhole_count">맨홀 개수(개)</label>
-                <input type="text" name="manhole_count" class="form-control" placeholder="맨홀 개수를 입력하세요.">
-              </div>
-              <div class="form-group">
-                <label for="rain_barrels_count">빗물받이 개수(개)</label>
-                <input type="text" name="rain_barrels_count" class="form-control" placeholder="빗물받이 개수를 입력하세요.">
-              </div>
-              <div class="form-rain_pump_count">
-                <label for="rain_pump">빗물펌프 개수(개)</label>
-                <input type="text" name="rain_pump_count" class="form-control" placeholder="빗물펌프 개수를 입력하세요.">
-              </div>
-              
-
-              <button type="submit" class="btn btn-primary btn-md pull-right">예측하기</button>
-
-            </form>
-
           </div>
-
-          <div class="col-lg-6 col-md-12">
-            {% if result %}
-                <h5 class="text-center mt-3">결과: {{ result }}</h5>
-                <h5 class="text-center mt-3">확률: {{ probability }}</h5>
-            {% endif %}
         </div>
+      </div>
+      <!-- Background image -->
+            
+    </header>
+        <main>
+            <div class="container">
+                <section class="mt-5 wow fadeIn">
+                    <div class="row">
+                    <div class="col-md-6 mb-4">
+                        <img src="https://mdbootstrap.com/img/Marketing/mdb-press-pack/mdb-main.jpg" class="img-fluid z-depth-1-half" alt="">
+                    </div>
+                    <div class="col-md-6 mb-4">
+                        <h3 id="model" class="h3 mb-3">서울 침수 예측 결과</h3>
+                        <p>LightGBM 모델을 통해 침수 피해를 학습 & 예측</p>
+                        <hr>
+                        <a target="_blank" href="https://github.com/Minhyeok-kimm/multi_semiproject/tree/main/result_model" class="btn btn-grey btn-md">Model Download
+                        <i class="fa fa-download ml-1"></i>
+                        </a>
+                    </div>
+                    </div>
+                </section>
+            <hr class="my-5">
+            <section>
+                <h3 id="start" class="h3 text-center mb-5">서울 침수 예측하기</h3>
+                <div class="row wow fadeIn">
+                <div class="col-lg-6 col-md-12 px-4">
+                    <form action="/predict" method="post">
+                    <div class="form-group">
+                        <label for="district">자치구 선택</label>
+                        <select name="district" class="form-control" id="districtSelect" onchange="selectDistrict()">
+                            <option value="">자치구 선택</option>
+                            <option value="강남">강남구</option>
+                            <option value="종로">종로구</option>
+                            <option value="성동">성동구</option>
+                            <option value="중">중구</option>
+                            <option value="광진">광진구</option>
+                            <option value="동대문">동대문구</option>
+                            <option value="중랑">중랑구</option>
+                            <option value="성북">성북구</option>
+                            <option value="강북">강북구</option>
+                            <option value="도봉">도봉구</option>
+                            <option value="노원">노원구</option>
+                            <option value="은평">은평구</option>
+                            <option value="서대문">서대문구</option>
+                            <option value="마포">마포구</option>
+                            <option value="양천">양천구</option>
+                            <option value="강서">강서구</option>
+                            <option value="구로">구로구</option>
+                            <option value="금천">금천구</option>
+                            <option value="영등포">영등포구</option>
+                            <option value="동작">동작구</option>
+                            <option value="관악">관악구</option>
+                            <option value="서초">서초구</option>
+                            <option value="송파">송파구</option>
+                            <option value="강동">강동구</option>
+                            <option value="용산">용산구</option>
+                        </select>
 
-        </div>
-
-      </section>
-
-
-
-     
-
-
-    </div>
-
-  </main>
-
-
-
+                        <script>
+                        function selectDistrict() {
+                            var districtSelect = document.getElementById('districtSelect');
+                            var selectedDistrict = districtSelect.value;
+                    
+                            var districtData = {
+                                '종로': {'해발고도': 146.699945417329, '불투수면': 0.420169521, '녹지면적율':0.012675, '하천면적율':0.011539827, '복개하천':1, '맨홀개수':9882, '빗물펌프개수':9}, 
+                                '중': {'해발고도': 53.6124721984602, '불투수면': 0.750550992, '녹지면적율':0.012675, '하천면적율':0.002956066, '복개하천':2, '맨홀개수':8173, '빗물펌프개수':0}, 
+                                '용산': {'해발고도': 34.3200689303037, '불투수면': 0.441571448, '녹지면적율':0.010724, '하천면적율':0.217710409, '복개하천':1, '맨홀개수':9788, '빗물펌프개수':38}, 
+                                '성동': {'해발고도': 22.0955175572518, '불투수면': 0.633540373, '녹지면적율':0.013973, '하천면적율':0.222164274, '복개하천':2, '맨홀개수':8581, '빗물펌프개수':46}, 
+                                '광진': {'해발고도': 41.8910765401369, '불투수면': 0.572362905, '녹지면적율':0.01583, '하천면적율':0.147947945, '복개하천':0, '맨홀개수':10208, '빗물펌프개수':102}, 
+                                '동대문': {'해발고도': 21.7889067524115, '불투수면': 0.738865287, '녹지면적율':0.004315, '하천면적율':0.040372791, '복개하천':2, '맨홀개수':12004, '빗물펌프개수':78}, 
+                                '중랑': {'해발고도': 62.9130881420417, '불투수면': 0.585059293, '녹지면적율':0.008163, '하천면적율':0.049120801, '복개하천':1, '맨홀개수':12418, '빗물펌프개수':23}, 
+                                '성북': {'해발고도': 120.526721991701, '불투수면': 0.524747698, '녹지면적율':0.004382, '하천면적율':0.021317028, '복개하천':4, '맨홀개수':12232, '빗물펌프개수':6}, 
+                                '강북': {'해발고도': 187.07254012561, '불투수면': 0.361560099, '녹지면적율':0.000923, '하천면적율':0.014112486, '복개하천':4, '맨홀개수':10818, '빗물펌프개수':5}, 
+                                '도봉': {'해발고도': 114.665266750947, '불투수면':0.404196949, '녹지면적율':0.008378, '하천면적율':0.022926865, '복개하천':1, '맨홀개수':8846, '빗물펌프개수':14}, 
+                                '노원': {'해발고도': 92.3936566677535, '불투수면': 0.369990211, '녹지면적율':0.022998, '하천면적율':0.031292149, '복개하천':2, '맨홀개수':11029, '빗물펌프개수':7}, 
+                                '은평': {'해발고도': 100.477626991565, '불투수면': 0.384954199, '녹지면적율':0.004418, '하천면적율':0.016744176, '복개하천':2, '맨홀개수':13320, '빗물펌프개수':4}, 
+                                '서대문': {'해발고도': 68.8962302612689, '불투수면': 0.529233532, '녹지면적율':0.004578, '하천면적율':0.024889612, '복개하천':0, '맨홀개수':9199, '빗물펌프개수':3}, 
+                                '마포': {'해발고도': 19.953597359736, '불투수면': 0.53689188, '녹지면적율':0.1082, '하천면적율':0.241737919, '복개하천':1, '맨홀개수':12322, '빗물펌프개수':71}, 
+                                '양천': {'해발고도': 22.807269904009, '불투수면': 0.672808937000002, '녹지면적율':0.05082, '하천면적율':0.025672404, '복개하천':0, '맨홀개수':9743, '빗물펌프개수':19}, 
+                                '강서': {'해발고도': 13.6490937974858, '불투수면': 0.397390498, '녹지면적율':0.037256, '하천면적율':0.088104827, '복개하천':0, '맨홀개수':13145, '빗물펌프개수':49}, 
+                                '구로': {'해발고도': 26.0731473053892, '불투수면': 0.606687898, '녹지면적율':0.019508, '하천면적율':0.048121847, '복개하천':1, '맨홀개수':10530, '빗물펌프개수':6}, 
+                                '금천': {'해발고도': 57.8994419306184, '불투수면': 0.60381585, '녹지면적율':0.032182, '하천면적율':0.047654534, '복개하천':1, '맨홀개수':6530, '빗물펌프개수':29}, 
+                                '영등포': {'해발고도': 11.4898411602209, '불투수면': 0.596108538, '녹지면적율':0.069282, '하천면적율':0.329046879, '복개하천':1, '맨홀개수':12770, '빗물펌프개수':56}, 
+                                '동작': {'해발고도': 37.6056411876183, '불투수면': 0.600425273, '녹지면적율':0.003568, '하천면적율':0.038944787, '복개하천':1, '맨홀개수':9996, '빗물펌프개수':16}, 
+                                '관악': {'해발고도': 139.631241817841, '불투수면': 0.391877461, '녹지면적율':0.029419, '하천면적율':0.018437412, '복개하천':3, '맨홀개수':11481, '빗물펌프개수':13}, 
+                                '서초': {'해발고도': 80.8598967790077, '불투수면':0.361814503, '녹지면적율':0.027221, '하천면적율':0.05307636, '복개하천':2, '맨홀개수':12232, '빗물펌프개수':41}, 
+                                '강남': {'해발고도': 35.5867214545453, '불투수면': 0.548861576, '녹지면적율':0.029274, '하천면적율':0.101498677, '복개하천':1, '맨홀개수':15031, '빗물펌프개수':25}, 
+                                '송파': {'해발고도': 21.8900851987972, '불투수면': 0.572412335, '녹지면적율':0.096774, '하천면적율':0.157490941, '복개하천':0, '맨홀개수':14333, '빗물펌프개수':59}, 
+                                '강동': {'해발고도': 25.6980910099889, '불투수면': 0.471825963, '녹지면적율':0.035874, '하천면적율':0.134419755, '복개하천':0, '맨홀개수':10269, '빗물펌프개수':9}
+                            };
+                    
+                            if (selectedDistrict in districtData) {
+                                var data = districtData[selectedDistrict];
+                                document.querySelector('input[name="altitude"]').value = data.해발고도;
+                                document.querySelector('input[name="impervious_surface"]').value = data.불투수면;
+                                document.querySelector('input[name="green_area"]').value = data.녹지면적율;
+                                document.querySelector('input[name="river_area"]').value = data.하천면적율;
+                                document.querySelector('input[name="river_count"]').value = data.복개하천;
+                                document.querySelector('input[name="manhole_count"]').value = data.맨홀개수;
+                                document.querySelector('input[name="rain_pump_count"]').value = data.빗물펌프개수;
+                            }
+                        }
+                        </script>
+                    </div>
+                    <div class="form-group">
+                        <label for="1hr_rainfall">1hr 최대 강수량(mm)</label>
+                        <input type="text" name="1hr_rainfall" class="form-control" placeholder="1hr 최대 강수량을 입력하세요.">
+                    </div>
+                    <div>
+                        <label for="month">월</label>
+                        <select name="month" class="form-control" id="districtSelect">
+                            <option value="">월 선택(6, 7, 8월을 예측합니다).</option>
+                            <option value="6">6월</option>
+                            <option value="7">7월</option>
+                            <option value="8">8월</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="day">일</label>
+                        <input type="text" name="day" class="form-control" placeholder="일을 입력하세요.">
+                    </div>
+                    <div class="form-group">
+                        <input type="hidden" name="altitude" class="form-control" placeholder="해발고도를 입력하세요.">
+                    </div>
+                    <div class="form-group">
+                        <input type="hidden" name="impervious_surface" class="form-control" placeholder="불투수면을 입력하세요.">
+                    </div>
+                    <div class="form-group">
+                        <input type="hidden" name="green_area" class="form-control" placeholder="녹지 면적율을 입력하세요.">
+                    </div>
+                    <div class="form-group">
+                        <input type="hidden" name="river_area" class="form-control" placeholder="하천 면적율을 입력하세요.">
+                    </div>
+                    <div class="form-group">
+                        <input type="hidden" name="river_count" class="form-control" placeholder="복개하천 개수를 입력하세요.">
+                    </div>
+                    <div class="form-group">
+                        <input type="hidden" name="manhole_count" class="form-control" placeholder="맨홀 개수를 입력하세요.">
+                    </div>
+                    <div class="form-rain_pump_count">
+                        <input type="hidden" name="rain_pump_count" class="form-control" placeholder="빗물펌프 개수를 입력하세요.">
+                    </div>
+                    </br>
+                    <button type="submit" class="btn btn-primary btn-md pull-right">예측하기</button>
+                    </form>
+                </div>
+                <div class="col-lg-6 col-md-12">
+                    {% if result %}
+                        <h5 class="text-center mt-3">결과: {{ result }}</h5>
+                        <h5 class="text-center mt-3">예측 수위: {{ probability }}</h5>
+                    {% endif %}
+                </div>
+                </div>
+            </section>
+            </div>
+        </main>
   <footer class="page-footer text-center font-small mt-4 wow fadeIn">
-
-    <div class="footer-copyright py-3">
-
-      © 2018 Copyright:
-
-      <a href="#" target="_blank"> 나동빈 </a>
-
-    </div>
-
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+        © 2020 Copyright:
+        <a class="text-dark" target="_blank" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+      </div>
   </footer>
-
-
-
   <!-- SCRIPTS -->
-
   <!-- JQuery -->
-
   <script type="text/javascript" src="{{url_for('static', filename='js/jquery-3.3.1.min.js')}}"></script>
-
   <!-- Bootstrap tooltips -->
-
   <script type="text/javascript" src="{{url_for('static', filename='js/popper.min.js')}}"></script>
-
   <!-- Bootstrap core JavaScript -->
-
   <script type="text/javascript" src="{{url_for('static', filename='js/bootstrap.min.js')}}"></script>
-
   <!-- MDB core JavaScript -->
-
   <script type="text/javascript" src="{{url_for('static', filename='js/mdb.min.js')}}"></script>
-
   <!-- Initializations -->
-
   <script type="text/javascript">
-
     // Animations initialization
-
     new WOW().init();
-
   </script>
-
 </body>
-
-
-
 </html>
 
