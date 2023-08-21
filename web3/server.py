@@ -3,13 +3,15 @@
 import pickle
 from flask import Flask, render_template, request, jsonify
 from flask import Flask, render_template, request, flash
+import pandas as pd
+import joblib
 
 
 app = Flask(__name__)
 app.secret_key = '1234'
 
 
-@app.route("/", methods=['GET', 'POST'])
+@app.route("/")
 def index():
 
     return render_template('index.html')
