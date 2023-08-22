@@ -50,6 +50,12 @@
               role="button"
               >호우재해대응현황 Live</a
             >
+            <a
+              class="btn btn-outline-light"
+              href="/"
+              role="button"
+              >Main 이동</a
+            >
           </div>
 
           <hr class="my-5" />
@@ -69,6 +75,7 @@
                     <div class="form-group">
                       <label for="district">자치구</label>
                       <select name="district" id="district" class="form-control" onchange="selectDistrict()">
+                        <option value="">자치구를 선택하세요</option>
                         <option value="강남">강남구</option>
                         <option value="종로">종로구</option>
                         <option value="성동">성동구</option>
@@ -154,7 +161,7 @@
                  <div class="form-group predictt">
                     <label for="month">월</label>
                     <select name="month" class="form-control" id="month">
-                        <option value="">월 입력</option>
+                        <option value="">월을 선택하세요</option>
                         <option value="6">6월</option>
                         <option value="7">7월</option>
                         <option value="8">8월</option>
@@ -163,41 +170,38 @@
                 <div class = "predictt">
                   <label for="day">일</label>
                   <input type="text" name="day" class="form-control" placeholder="일을 입력하세요.">
+                </div>
+                <div class="predictt">
+                  <label for="day">맨홀 개수</label>
+                  <input type="text" name="manhole_count" class="form-control" placeholder="맨홀 개수를 입력하세요.">
+                </div>
+                <div class="predictt">
+                  <label for="day">빗물펌프 개수</label>
+                  <input type="text" name="rain_pump_count" class="form-control" placeholder="빗물펌프 개수를 입력하세요.">
+                </div>
               </div>
-                
-
-              <div class="form-group predictt">
+            <div style="text-align:center" class="form-group predictt">
                 <input type="hidden" name="altitude" class="form-control" placeholder="해발고도를 입력하세요.">
-            </div>
-            <div class="form-group predictt">
                 <input type="hidden" name="impervious_surface" class="form-control" placeholder="불투수면을 입력하세요.">
-            </div>
-            <div class="form-group predictt">
                 <input type="hidden" name="green_area" class="form-control" placeholder="녹지 면적율을 입력하세요.">
-            </div>
-            <div class="form-group predictt">
                 <input type="hidden" name="river_area" class="form-control" placeholder="하천 면적율을 입력하세요.">
-            </div>
-            <div class="form-group predictt">
                 <input type="hidden" name="river_count" class="form-control" placeholder="복개하천 개수를 입력하세요.">
-            </div>
-            <div class="form-group predictt">
-                <input type="hidden" name="manhole_count" class="form-control" placeholder="맨홀 개수를 입력하세요.">
-            </div>
             <div class="form-rain_pump_count predictt">
-                <input type="hidden" name="rain_pump_count" class="form-control" placeholder="빗물펌프 개수를 입력하세요.">
             </div>
-            </br>
-            <div class="col-lg-6 col-md-12">
+            <p style="test-align:center" class="col-lg-6 col-md-12">
               {% if result %}
                   <h5 class="text-center mt-3">결과: {{ result }}</h5>
               {% endif %}
               {% if probability %}
-                  <h5 class="text-center mt-3">예측 수위: {{ probability }}</h5>
+                    <h5 class="text-center mt-3">예측 수위: {{ probability }}</h5>
+                    </br>
+                    <h5 class="text-center mt-3">예측 수위가 0.8 이상이면 침수 예보를 발령합니다</h5>
+                    <button type="button" onclick="location.href='/predict'" class="btn btn-primary btn-md pull-right">다시 예측하기</button>
               {% endif %}
-            </div>
+            </p>
         </br>
             <button type="submit" class="btn btn-primary btn-md pull-right">예측하기</button>
+            <button type="reset" class="btn btn-primary btn-md pull-right">초기화</button>
             </form>
         </div>
                   
